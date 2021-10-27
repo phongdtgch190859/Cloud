@@ -1,0 +1,33 @@
+<div class="mt-4">
+	<div class="row">
+		{{#each Toys}}
+		<div class="col-sm-6 col-lg-4">
+			<div class="card" >
+				<a href="/toys/{{this.slug}}">
+				<img class="card-img-top" src=" {{this.img}} " alt="{{this.name}}">
+				</a>
+				<div class="card-body">
+					<a href="/toys/{{this.slug}}">
+					<h5 class="card-title">{{this.name}}</h5>
+					</a>
+					<h5 class="card-title formatPrice">{{this.price}}</h5>
+					<h5 class="card-title">{{this.type}}</h5>
+					<a href="#" class="btn btn-primary">Buy</a>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+<script>
+	var valuePrice = document.querySelectorAll('.formatPrice')
+	valuePrice.forEach(element=>{
+		element.innerHTML = formatCash(element.innerHTML) + " vnđ";
+	})
+	function formatCash(str) {
+		//9000 ['9', '0', '0', '0'] => ['0', '0', '0', '9']
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        })
+    }
+</script>	

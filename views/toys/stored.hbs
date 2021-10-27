@@ -1,0 +1,31 @@
+<div class="mt-4">
+    <h2>My Products</h2>
+     <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">name</th>
+                <th scope="col">price</th>
+                <th scope="col">type</th>
+                <th scope="col">time created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Toys}}
+            <tr>
+                <th scope="col">{{sum @index 1}}</th>
+                <td scope="col">{{this.name}}</td>
+                <td scope="col">{{this.price}}</td>
+                <td scope="col">{{this.type}}</td>
+                <td scope="col">{{this.createdAt}}</td>
+                <td>
+                      <a href="/toys/{{this._id}}/edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                   
+                      <a href="/toys/{{this._id}}/delete"
+                                    onclick="return confirm('Are you sure to delete this record ?');"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
